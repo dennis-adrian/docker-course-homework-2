@@ -3,7 +3,7 @@ const dateInfo = require('./helpers/dateInfo');
 const hostInfo = require('./helpers/hostInfo');
 
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 
 app.get('/', (req, res) => {
   const { time, date, timezone } = dateInfo();
