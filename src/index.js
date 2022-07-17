@@ -1,12 +1,16 @@
-const express = require('express')
+const express = require('express');
+const dateInfo = require('./helpers/dateInfo');
+const hostInfo = require('./helpers/hostInfo');
 
 const app = express()
 const port = 3000
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  const { time, date, timezone } = dateInfo();
+  const { hostname, ipAddresses } = hostInfo();
+  res.json({ time, date, timezone, hostname, ipAddresses });
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`App listening on port ${port}`);
 })
